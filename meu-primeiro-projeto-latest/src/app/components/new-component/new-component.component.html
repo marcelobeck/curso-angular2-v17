@@ -1,0 +1,99 @@
+<h2>Control flow</h2>
+<h3>IF</h3>
+
+<!-- Nova forma -->
+@if (true) {
+    <p>teste</p>
+} @else {
+    <p>teste-1</p>
+}
+<!-- Forma Antiga -->
+ <ng-container *ngif="true"></ng-container>
+
+<!--------------------------------------------------------------------->
+
+<h2>Control flow</h2>
+<h3>IF, FOR</h3>
+
+<!-- Nova forma -->
+@if (loadingData$ | async; as data) {
+    <ul>
+        @for(item of data; track item){
+            <li>i{{item}}</li>
+        }
+    </ul>
+} @else {
+    <p>teste-1</p>
+}
+<!-- Forma Antiga -->
+ <ng-container *ngif="loadingData$ | async as data; else loading">
+    <ul>
+        <ng-container *ngFor="let item of data; trackBy: trackByFn"></ng-container>
+    </ul>
+ </ng-container>
+
+<!-- @For e seus valores -->
+<!-- Nova forma -->
+
+@for(
+    item of itens; track item.name;
+    let i = $index;
+){
+    <p>{{item.nome}}</p>
+}
+
+<!-- Forma Antiga -->
+ <ng-container
+    *ngFor="
+    let item of itens;
+    let i = index;
+    trackBy: trackByFn
+    ">
+<p>{{ item.name }}</p>
+
+</ng-container>
+
+<!-- Forma Nova -->
+ <ul>
+    @for (item of itens; track item.name) {
+        <li> {{ item.name }}</li>
+    } @empty {
+        <li> Não Contem valores</li>
+    }
+ </ul>
+
+ <!-- Forma Antiga -->
+  <ng-container *ngIf="itens.length === 0; else itensExist">
+    <li>Não contém valores</li>
+  </ng-container>
+  <ng-template #itensExist>
+    <ng-container *ngFor="let item of itens">
+        <li>
+            {{ item.name }}
+        </li>
+
+    </ng-container>
+
+  </ng-template>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 

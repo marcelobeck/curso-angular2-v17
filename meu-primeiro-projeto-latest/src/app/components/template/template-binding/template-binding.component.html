@@ -1,0 +1,28 @@
+<h2>Template</h2>
+
+<h3>Text Interpolation</h3>
+{{ name }}
+
+<h2>Property binding "[]"</h2>
+<button [disabled]="true">Button</button>
+
+<h2>Attribute binding "[attr.aria-label]"</h2>
+<p [attr.aria-label]="name">teste</p>
+
+<h2>Class and Style binding</h2>
+<p [class.background-red]="age >= 32">{{name}}</p>
+
+<h2>Event binding</h2>
+<button (click)="sum()">+</button>
+
+<h3>Two-way binding</h3>
+<input [(ngModel)]="name">
+
+<h3>Diretivas de atributo</h3>
+<div [ngClass]="{ 'background-red': true }">Classes condicionais</div>
+
+<div [ngStyle]="{ color: true}">Estilo Dinâmico</div>
+
+<h2>Template Variables</h2>
+<input #name value="Marcelo" />
+{{ name.value }}
