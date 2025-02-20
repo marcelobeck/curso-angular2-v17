@@ -4,13 +4,15 @@ import { FormsModule } from '@angular/forms';
 import { delay, Observable, of } from 'rxjs';
 
 @Component({
-  selector: 'app-new-component',
+  selector: 'app-control-flow-component',
   standalone: true,
   imports: [CommonModule, FormsModule],
-  templateUrl: './new-component.component.html',
-  styleUrl: './new-component.component.scss'
+  templateUrl: './control-flow.component.html',
+  styleUrl: './control-flow.component.scss'
 })
-export class NewComponentComponent {
+export class ControlFlowComponent {
+
+  letra: string = 'A'; 
 
   public loadingData$: Observable<string[]> = of([
     'item 1',
@@ -22,6 +24,6 @@ export class NewComponentComponent {
     return index;
   }
 
-  public itens = [{nome: 'Marcelo'}]
+  public itens = [{name: 'Marcelo'}]
 
 }

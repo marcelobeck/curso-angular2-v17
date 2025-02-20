@@ -10,9 +10,9 @@
 <!-- Forma Antiga -->
  <ng-container *ngif="true"></ng-container>
 
-<!--------------------------------------------------------------------->
+ <!--------------------------------------------------------------------->
 
-<h2>Control flow</h2>
+ <h2>Control flow</h2>
 <h3>IF, FOR</h3>
 
 <!-- Nova forma -->
@@ -32,6 +32,9 @@
     </ul>
  </ng-container>
 
+  <!--------------------------------------------------------------------->
+
+
 <!-- @For e seus valores -->
 <!-- Nova forma -->
 
@@ -39,7 +42,7 @@
     item of itens; track item.name;
     let i = $index;
 ){
-    <p>{{item.nome}}</p>
+    <p>{{item.name}}</p>
 }
 
 <!-- Forma Antiga -->
@@ -53,7 +56,9 @@
 
 </ng-container>
 
-<!-- Forma Nova -->
+  <!--------------------------------------------------------------------->
+
+  <!-- Forma Nova -->
  <ul>
     @for (item of itens; track item.name) {
         <li> {{ item.name }}</li>
@@ -76,10 +81,41 @@
 
   </ng-template>
 
+  <!--------------------------------------------------------------------->
 
 
 
+<h2>Control flow</h2>
+<h3>IF, FOR, SWITCH CASE</h3>
 
+<!-- Nova Forma -->
+
+@switch (letra) {
+    @case ('A') {
+        <p>Sim, sua letra é: A</p>
+    }
+    @case ('B') {
+        <p>Sim, sua letra é: B</p>
+    }
+    @default {
+        <p>Outro</p>
+    }
+}
+
+<!-- Forma Antiga -->
+<ng-container [ngSwitch]="letra">
+    <ng-container *ngSwitchCase="'A'">
+        <p>Sim, sua letra é: A</p>
+    </ng-container>
+
+    <ng-container *ngSwitchCase="'B'">
+        <p>Sim, sua letra é: B</p>
+    </ng-container>
+
+    <ng-container *ngSwitchDefault>
+        <p>Outro</p>
+    </ng-container>
+</ng-container>
 
 
 
