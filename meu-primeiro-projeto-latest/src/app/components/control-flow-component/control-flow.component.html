@@ -1,4 +1,5 @@
-<h2>Control flow</h2>
+<h2>Control Flow</h2>
+
 <h3>IF</h3>
 
 <!-- Nova forma -->
@@ -7,89 +8,81 @@
 } @else {
     <p>teste-1</p>
 }
+
 <!-- Forma Antiga -->
- <ng-container *ngif="true"></ng-container>
+<ng-container *ngIf="true">
+    <p>teste</p>
+</ng-container>
 
- <!--------------------------------------------------------------------->
+<!--------------------------------------------------------------------->
 
- <h2>Control flow</h2>
 <h3>IF, FOR</h3>
 
 <!-- Nova forma -->
 @if (loadingData$ | async; as data) {
     <ul>
-        @for(item of data; track item){
-            <li>i{{item}}</li>
+        @for (item of data; track item) {
+            <li>{{ item }}</li>
         }
     </ul>
 } @else {
-    <p>teste-1</p>
+    <p>Carregando...</p>
 }
+
 <!-- Forma Antiga -->
- <ng-container *ngif="loadingData$ | async as data; else loading">
+<ng-container *ngIf="loadingData$ | async as data; else loading">
     <ul>
-        <ng-container *ngFor="let item of data; trackBy: trackByFn"></ng-container>
+        <ng-container *ngFor="let item of data; trackBy: trackByFn">
+            <li>{{ item }}</li>
+        </ng-container>
     </ul>
- </ng-container>
+</ng-container>
+<ng-template #loading>
+    <p>Carregando...</p>
+</ng-template>
 
-  <!--------------------------------------------------------------------->
+<!--------------------------------------------------------------------->
 
+<h3>FOR com valores</h3>
 
-<!-- @For e seus valores -->
 <!-- Nova forma -->
-
-@for(
-    item of itens; track item.name;
-    let i = $index;
-){
-    <p>{{item.name}}</p>
+@for (item of itens; track item.name; let i = $index) {
+    <p>{{ item.name }} (Índice: {{ i }})</p>
 }
 
 <!-- Forma Antiga -->
- <ng-container
-    *ngFor="
-    let item of itens;
-    let i = index;
-    trackBy: trackByFn
-    ">
-<p>{{ item.name }}</p>
-
+<ng-container *ngFor="let item of itens; let i = index; trackBy: trackByFn">
+    <p>{{ item.name }} (Índice: {{ i }})</p>
 </ng-container>
 
-  <!--------------------------------------------------------------------->
+<!--------------------------------------------------------------------->
 
-  <!-- Forma Nova -->
- <ul>
+<h3>FOR com lista vazia</h3>
+
+<!-- Nova forma -->
+<ul>
     @for (item of itens; track item.name) {
-        <li> {{ item.name }}</li>
+        <li>{{ item.name }}</li>
     } @empty {
-        <li> Não Contem valores</li>
+        <li>Não contém valores</li>
     }
- </ul>
+</ul>
 
- <!-- Forma Antiga -->
-  <ng-container *ngIf="itens.length === 0; else itensExist">
+<!-- Forma Antiga -->
+<ng-container *ngIf="itens.length === 0; else itensExist">
     <li>Não contém valores</li>
-  </ng-container>
-  <ng-template #itensExist>
+</ng-container>
+<ng-template #itensExist>
     <ng-container *ngFor="let item of itens">
-        <li>
-            {{ item.name }}
-        </li>
-
+        <li>{{ item.name }}</li>
     </ng-container>
+</ng-template>
 
-  </ng-template>
+<!--------------------------------------------------------------------->
 
-  <!--------------------------------------------------------------------->
-
-
-
-<h2>Control flow</h2>
-<h3>IF, FOR, SWITCH CASE</h3>
+<h3>SWITCH CASE</h3>
 
 <!-- Nova Forma -->
-
 @switch (letra) {
     @case ('A') {
         <p>Sim, sua letra é: A</p>
@@ -107,29 +100,10 @@
     <ng-container *ngSwitchCase="'A'">
         <p>Sim, sua letra é: A</p>
     </ng-container>
-
     <ng-container *ngSwitchCase="'B'">
         <p>Sim, sua letra é: B</p>
     </ng-container>
-
     <ng-container *ngSwitchDefault>
         <p>Outro</p>
     </ng-container>
 </ng-container>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- 

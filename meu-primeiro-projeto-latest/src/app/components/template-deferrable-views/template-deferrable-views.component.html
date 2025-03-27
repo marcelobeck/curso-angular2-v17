@@ -1,0 +1,13 @@
+<p>template-deferrable-views</p>
+
+@defer (on timer(200ms)) {
+    <app-control-flow-component />
+} @placeholder {
+    <p aria-live="polite">Mostrar antes de carregar algo.</p>
+} @loading {
+    <p aria-live="polite">Loading...</p>
+} @error {
+    <p aria-live="polite">Loading failed</p>
+}
+
+
