@@ -1,5 +1,16 @@
 <p>template-deferrable-views</p>
 
+<!--
+on -> especifica uma condição de acionar usando um acionador da lista.
+(idle, timer, viewport, interaction, hover, immediate, prefetch)
+
+when -> especifica uma condição imperativa com uma expressão que retorna
+um booleano. Quando esta expressão se torna verdadeira, o espaço reservado
+é trocado pelo conteúdo carregado lentamente (o que pode ser uma operação assíncrona se as dependências
+precisarem ser buscadas).
+
+-->
+
 @defer (on timer(200ms)) {
     <app-control-flow-component />
 } @placeholder {
